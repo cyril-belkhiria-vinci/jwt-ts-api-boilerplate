@@ -114,3 +114,30 @@ app.use(cors(corsOptions));
 
 # Crédit :
 - La configuration du projet pour utiliser TS & le linter a été reprise du cours de Fullstack Open (`Typing an Express app` : https://fullstackopen.com/en/part9/typing_an_express_app ainsi que via https://github.com/fullstack-hy2020/flight-diary).
+
+# Documentation de l'API — Exercice 3.1
+
+## Opérations disponibles
+
+| URI | Méthode HTTP | Auths ? | Opération |
+|---|---|---|---|
+| **`/auth/register`** | POST | Non | REGISTER : Créer un nouvel utilisateur `{username, password}` |
+| **`/auth/login`** | POST | Non | LOGIN : Authentifier un utilisateur et renvoyer un token JWT |
+
+### 🎬 Films
+| URI | Méthode HTTP | Auths ? | Opération |
+|---|---|---|---|
+| **`/films`** | GET | Non | READ ALL : Lire tous les films |
+| **`/films/:id`** | GET | Non | READ ONE : Lire un film par ID |
+| **`/films`** | POST | JWT | CREATE ONE : Créer un film `{title, director, duration, budget?, description?, imageUrl?}` |
+| **`/films/:id`** | PATCH | JWT | UPDATE ONE : Modifier un film existant |
+| **`/films/:id`** | DELETE | JWT | DELETE ONE : Supprimer un film existant |
+
+### 💬 Commentaires
+| URI | Méthode HTTP | Auths ? | Opération |
+|---|---|---|---|
+| **`/comments`** | GET | Non | READ ALL FILTERED : Lire tous les commentaires ou filtrer via `?filmId=` |
+| **`/comments`** | POST | JWT | CREATE ONE : Ajouter un commentaire associé à l'utilisateur authentifié. Format `{filmId, content}` |
+| **`/comments/:filmId`** | DELETE | JWT | DELETE ONE : Supprimer le commentaire du user authentifié pour un film donné |
+
+---
